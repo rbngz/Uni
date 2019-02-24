@@ -1,0 +1,59 @@
+.button{
+    -fx-min-width: 90;
+    -fx-min-height: 100;
+    -fx-font-size: 24px;
+    /*-fx-background-insets: 0,1,2,3;*/
+    -fx-background-radius: 3,2,2,2;
+    -fx-text-fill: black;
+
+
+}
+.label{
+    -fx-min-height: 100;
+    -fx-min-width: 360;
+    -fx-font-size: 50px;
+    -fx-alignment: center;
+    -fx-background-color: BLACK;
+    -fx-text-fill: WHITE;
+}
+#red-button{
+    -fx-background-color:
+            #000000,
+            linear-gradient(#ea767a, #8f2a2f),
+            linear-gradient(#b74b54, #753136),
+            linear-gradient(#ab5054, #682428);
+    -fx-text-fill: white;
+
+
+}
+
+#equals-button{
+    -fx-background-color:
+            #000000,
+            linear-gradient(#99eab0, #408f5d),
+            linear-gradient(#5ab76c, #2a7538),
+            linear-gradient(#57ab61, #2b6835);
+    -fx-text-fill: white;
+}
+
+#plus-button{
+    -fx-background-color:
+            #000000,
+            linear-gradient(#7ebcea, #2f4b8f),
+            linear-gradient(#426ab7, #263e75),
+            linear-gradient(#395cab, #223768);
+    -fx-text-fill: white;
+
+}
+/*
+-fx-background-color:
+#000000,
+linear-gradient(#7ebcea, #2f4b8f),
+linear-gradient(#426ab7, #263e75),
+linear-gradient(#395cab, #223768);
+-fx-background-insets: 0,1,2,3;
+-fx-background-radius: 3,2,2,2;
+-fx-padding: 12 30 12 30;
+-fx-text-fill: white;
+-fx-font-size: 12px;
+*/
