@@ -13,7 +13,7 @@
     -fx-min-width: 360;
     -fx-font-size: 50px;
     -fx-alignment: center;
-    -fx-background-color: BLACK;
+    -fx-background-color: black;
     -fx-text-fill: WHITE;
 }
 #red-button{

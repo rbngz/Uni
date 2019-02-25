@@ -13,7 +13,6 @@ public class CalculatorModel {
         return result;
 
 
-
     }
 
 }
