@@ -126,7 +126,9 @@ public enum HandType {
     }
     
     public static boolean isStraightFlush(ArrayList<Card> cards) {
-        // TODO        
-        return false;
+        // TODO
+
+        return (isStraight(cards)&&isFlush(cards));
+
     }
 }

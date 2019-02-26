@@ -2,6 +2,8 @@ package poker.version_graphics.view;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -30,11 +32,17 @@ public class PokerGameView {
 		// Create the control area
 		controls = new ControlArea();
 		controls.linkDeck(model.getDeck()); // link DeckLabel to DeckOfCards in the logic
+
+		// Create MenuItems and MenuBar
+		MenuBar menu = new MenuBar();
+		Menu menu1 = new Menu("Menu1");
+		menu.getMenus().add(menu1);
 		
 		// Put players and controls into a BorderPane
 		BorderPane root = new BorderPane();
 		root.setCenter(players);
 		root.setBottom(controls);
+		root.setTop(menu);
 		
 		// Disallow resizing - which is difficult to get right with images
 		stage.setResizable(false);

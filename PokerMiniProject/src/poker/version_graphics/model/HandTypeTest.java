@@ -52,6 +52,12 @@ public class HandTypeTest {
 			{ "2S", "TS", "TC", "TD", "2D" },
 			{ "AS", "AC", "KH", "KD", "KC" }
 	};
+	private static String[][] straightFlushs = {
+			{ "2S", "3S", "4S", "5S", "6S" },
+			{ "TC", "AC", "JC", "KC", "QC" },
+			{ "TH", "9H", "8H", "6H", "7H" },
+			{ "4D", "7D", "5D", "8D", "6D" }
+	};
 
 
 
@@ -62,6 +68,7 @@ public class HandTypeTest {
 	ArrayList<ArrayList<Card>> straightHands;
 	ArrayList<ArrayList<Card>> flushHands;
 	ArrayList<ArrayList<Card>> fullHouseHands;
+	ArrayList<ArrayList<Card>> straightFlushHands;
 	
 	/**
 	 * The makeHands method is called before each test method,
@@ -76,6 +83,7 @@ public class HandTypeTest {
 		straightHands = makeHands(straights);
 		flushHands = makeHands(flushs);
 		fullHouseHands = makeHands(fullHouses);
+		straightFlushHands = makeHands(straightFlushs);
 	}
 
 	/**
@@ -162,6 +170,23 @@ public class HandTypeTest {
 		}
 
 	}
+	@Test
+	public void testIsStraightFlush() {
+		for (ArrayList<Card> hand : highCardHands) {
+			assertFalse(HandType.isStraightFlush(hand));
+		}
+		for (ArrayList<Card> hand : pairHands) {
+			assertFalse(HandType.isStraightFlush(hand));
+		}
+		for (ArrayList<Card> hand : twoPairHands) {
+			assertFalse(HandType.isStraightFlush(hand));
+		}
+		for (ArrayList<Card> hand : straightFlushHands) {
+			assertTrue(HandType.isStraightFlush(hand));
+		}
+
+	}
+
 
 
 
