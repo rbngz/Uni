@@ -57,12 +57,14 @@ public enum HandType {
     }
     
     public static boolean isThreeOfAKind(ArrayList<Card> cards) {
+        // Store the ordinal value of the ranks to an Integer arraylist and sort it
         ArrayList<Integer> cardValue = new ArrayList<>();
-
         for (int i = 0; i<cards.size();i++){
             cardValue.add(cards.get(i).getRank().ordinal());
         }
         Collections.sort(cardValue);
+
+        // Check if the first three cards or the last three cards are the same
         if(cardValue.get(0).equals(cardValue.get(1))&& cardValue.get(1).equals(cardValue.get(2))) return true;
         if(cardValue.get(cardValue.size()-1).equals(cardValue.get(cardValue.size()-2))&& cardValue.get(cardValue.size()-2).equals(cardValue.get(cardValue.size()-3))) return true;
         else return false;
@@ -70,16 +72,16 @@ public enum HandType {
     }
     
     public static boolean isStraight(ArrayList<Card> cards) {
-        // TODO
+
         //First find lowest card
         ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
-
         int lowestRankValue = 13;
         for (int i = 0; i< clonedCards.size();i++){
             if(clonedCards.get(i).getRank().ordinal()<lowestRankValue){
                 lowestRankValue = clonedCards.get(i).getRank().ordinal();
             }
         }
+        //remove the lowest card and see if the next card is there -> remove too, and so on
         int i =0;
         while (i<clonedCards.size()){
             if (clonedCards.get(i).getRank().ordinal()==lowestRankValue){
@@ -88,11 +90,13 @@ public enum HandType {
                 i=0;
             } else i++;
         }
+        // if no cards are left, the hand is a straight
         return (clonedCards.isEmpty());
     }
     
     public static boolean isFlush(ArrayList<Card> cards) {
-        // TODO should work!
+
+        // test if each card rank is the same as the previous one
         boolean allEqual = true;
         for(int i =0; i<cards.size()-1;i++){
             if (cards.get(i).getSuit()!=cards.get(i+1).getSuit()){
@@ -104,19 +108,21 @@ public enum HandType {
     }
     
     public static boolean isFullHouse(ArrayList<Card> cards) {
-        // TODO edit code!!! does not work in every case!
 
+        //test if three of a kind is rue and two pair is also true -> always full house
         if (isThreeOfAKind(cards)&&isTwoPair(cards)){
             return true;
         } else return false;
     }
-    
+
     public static boolean isFourOfAKind(ArrayList<Card> cards) {
-        // TODO
+        // TODO edit method!!!
         ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
         //check if the first three cards are the same
         clonedCards.remove(4);
         clonedCards.remove(3);
+
+        // check if one of the last 2 cards are the same rank as the others
         if(isThreeOfAKind(clonedCards)){
             if(cards.get(4).getRank()==cards.get(0).getRank()||cards.get(3).getRank()==cards.get(0).getRank()){
                 return true;
@@ -126,9 +132,6 @@ public enum HandType {
     }
     
     public static boolean isStraightFlush(ArrayList<Card> cards) {
-        // TODO
-
         return (isStraight(cards)&&isFlush(cards));
-
     }
 }
