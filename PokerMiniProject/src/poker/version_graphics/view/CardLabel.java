@@ -21,7 +21,12 @@ public class CardLabel extends Label {
 			imv.setPreserveRatio(true);
 			this.setGraphic(imv);
 		} else {
-			this.setGraphic(null);
+			Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/card_back_red.png"));
+			ImageView imv = new ImageView(image);
+			imv.fitWidthProperty().bind(this.widthProperty().subtract(2));
+			imv.fitHeightProperty().bind(this.heightProperty().subtract(2));
+			imv.setPreserveRatio(true);
+			this.setGraphic(imv);
 		}
 	}
 
