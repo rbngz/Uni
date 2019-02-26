@@ -4,12 +4,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
+import poker.version_graphics.controller.PokerGameController;
 import poker.version_graphics.model.PokerGameModel;
 
 public class PokerGameView {
@@ -17,6 +19,7 @@ public class PokerGameView {
 	private ControlArea controls;
 	
 	private PokerGameModel model;
+	private MenuBar menu;
 	
 	public PokerGameView(Stage stage, PokerGameModel model) {
 		this.model = model;
@@ -34,8 +37,14 @@ public class PokerGameView {
 		controls.linkDeck(model.getDeck()); // link DeckLabel to DeckOfCards in the logic
 
 		// Create MenuItems and MenuBar
-		MenuBar menu = new MenuBar();
-		Menu menu1 = new Menu("Menu1");
+		menu = new MenuBar();
+		Menu menu1 = new Menu("Color");
+		MenuItem blue = new MenuItem("blue");
+		//TODO add menu item event
+		blue.setOnAction(event -> {
+			CardLabel.setColor("card_back_blue.png");
+		});
+		menu1.getItems().add(blue);
 		menu.getMenus().add(menu1);
 		
 		// Put players and controls into a BorderPane
