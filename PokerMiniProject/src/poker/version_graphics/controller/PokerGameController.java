@@ -7,6 +7,7 @@ import poker.version_graphics.model.Card;
 import poker.version_graphics.model.DeckOfCards;
 import poker.version_graphics.model.Player;
 import poker.version_graphics.model.PokerGameModel;
+import poker.version_graphics.view.CardLabel;
 import poker.version_graphics.view.PlayerPane;
 import poker.version_graphics.view.PokerGameView;
 
@@ -20,6 +21,10 @@ public class PokerGameController {
 		
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal() );
+		view.getColorChoice().setOnAction(event -> {
+			CardLabel.setColor("card_back_"+view.getColorChoice().getText()+".png");
+		});
+
 	}
 	
 

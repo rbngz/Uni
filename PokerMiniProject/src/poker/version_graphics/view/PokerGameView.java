@@ -39,11 +39,12 @@ public class PokerGameView {
 		// Create MenuItems and MenuBar
 		menu = new MenuBar();
 		Menu menu1 = new Menu("Color");
+		MenuItem red = new MenuItem("red");
 		MenuItem blue = new MenuItem("blue");
+		MenuItem black = new MenuItem("black");
+		MenuItem purple = new MenuItem("purple");
 		//TODO add menu item event
-		blue.setOnAction(event -> {
-			CardLabel.setColor("card_back_blue.png");
-		});
+
 		menu1.getItems().add(blue);
 		menu.getMenus().add(menu1);
 		
@@ -75,5 +76,8 @@ public class PokerGameView {
 	
 	public Button getDealButton() {
 		return controls.btnDeal;
+	}
+	public MenuItem getColorChoice(){
+		return menu.getMenus().get(0).getItems().get(0);
 	}
 }
