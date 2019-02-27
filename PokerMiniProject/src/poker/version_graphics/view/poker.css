@@ -32,3 +32,6 @@
     -fx-pref-height: 162;
     -fx-max-height: 800;
 }
+.on-grass {
+    -fx-text-fill: white;
+}

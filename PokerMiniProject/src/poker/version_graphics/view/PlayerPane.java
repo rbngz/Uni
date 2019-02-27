@@ -22,7 +22,9 @@ public class PlayerPane extends VBox {
         
         // Add child nodes
         this.getChildren().addAll(lblName, hboxCards, lblEvaluation);
-        
+        lblName.getStyleClass().add("on-grass");
+        lblEvaluation.getStyleClass().add("on-grass");
+
         // Add CardLabels for the cards
         for (int i = 0; i < 5; i++) {
             Label lblCard = new CardLabel();

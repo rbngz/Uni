@@ -1,10 +1,7 @@
 package poker.version_graphics.view;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -38,7 +35,7 @@ public class PokerGameView {
 
 		// Create MenuItems and MenuBar
 		menu = new MenuBar();
-		Menu menu1 = new Menu("Color");
+		Menu menu1 = new Menu("Choose Color");
 		MenuItem red = new MenuItem("Red");
 		MenuItem blue = new MenuItem("Blue");
 		MenuItem black = new MenuItem("Black");
@@ -64,7 +61,26 @@ public class PokerGameView {
         scene.getStylesheets().add(
                 getClass().getResource("poker.css").toExternalForm());
         stage.setTitle("Poker Miniproject");
-        stage.setScene(scene);
+
+        //create entry scene
+		Button enter = new Button("Start Game");
+		enter.setOnAction(event -> {
+			stage.setScene(scene);
+		});
+		Label enterNames = new Label("Enter Player Names!");
+		HBox div = new HBox();
+
+		div.getChildren().add(enter);
+		div.getChildren().add(enterNames);
+		Scene entry = new Scene(div);
+
+		entry.getStylesheets().add(
+				getClass().getResource("poker.css").toExternalForm());
+
+
+
+
+        stage.setScene(entry);
         stage.show();		
 	}
 	
