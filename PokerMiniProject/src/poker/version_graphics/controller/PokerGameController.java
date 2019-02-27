@@ -24,7 +24,7 @@ public class PokerGameController {
 		for (int i = 0; i< 4;i++) {
 			int index = i;
 			view.getColorChoice(i).setOnAction(event -> {
-				CardLabel.setColor("card_back_" + view.getColorChoice(index).getText() + ".png");
+				CardLabel.setColor("card_back_" + view.getColorChoice(index).getText().toLowerCase() + ".png");
 				shuffle();
 			});
 		}

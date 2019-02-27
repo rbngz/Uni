@@ -39,11 +39,10 @@ public class PokerGameView {
 		// Create MenuItems and MenuBar
 		menu = new MenuBar();
 		Menu menu1 = new Menu("Color");
-		MenuItem red = new MenuItem("red");
-		MenuItem blue = new MenuItem("blue");
-		MenuItem black = new MenuItem("black");
-		MenuItem purple = new MenuItem("purple");
-		//TODO add menu item event
+		MenuItem red = new MenuItem("Red");
+		MenuItem blue = new MenuItem("Blue");
+		MenuItem black = new MenuItem("Black");
+		MenuItem purple = new MenuItem("Purple");
 
 		menu1.getItems().add(blue);
 		menu1.getItems().add(black);
