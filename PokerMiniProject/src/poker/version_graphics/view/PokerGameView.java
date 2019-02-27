@@ -46,6 +46,9 @@ public class PokerGameView {
 		//TODO add menu item event
 
 		menu1.getItems().add(blue);
+		menu1.getItems().add(black);
+		menu1.getItems().add(purple);
+		menu1.getItems().add(red);
 		menu.getMenus().add(menu1);
 		
 		// Put players and controls into a BorderPane
@@ -77,7 +80,7 @@ public class PokerGameView {
 	public Button getDealButton() {
 		return controls.btnDeal;
 	}
-	public MenuItem getColorChoice(){
-		return menu.getMenus().get(0).getItems().get(0);
+	public MenuItem getColorChoice(int i){
+		return menu.getMenus().get(0).getItems().get(i);
 	}
 }

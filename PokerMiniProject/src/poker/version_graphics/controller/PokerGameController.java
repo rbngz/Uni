@@ -21,13 +21,16 @@ public class PokerGameController {
 		
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal() );
-		view.getColorChoice().setOnAction(event -> {
-			CardLabel.setColor("card_back_"+view.getColorChoice().getText()+".png");
-			shuffle();
-		});
+		for (int i = 0; i< 4;i++) {
+			int index = i;
+			view.getColorChoice(i).setOnAction(event -> {
+				CardLabel.setColor("card_back_" + view.getColorChoice(index).getText() + ".png");
+				shuffle();
+			});
+		}
 
 	}
-	
+
 
 
     /**
