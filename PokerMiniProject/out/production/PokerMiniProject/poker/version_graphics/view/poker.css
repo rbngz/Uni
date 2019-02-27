@@ -16,6 +16,7 @@
 	-fx-padding: 5.0px;
     -fx-border-color: black;
     -fx-border-width: 2.0px;
+    -fx-background-image: url("/poker/images/poker_table.jpg");
 }
 
 .card {
