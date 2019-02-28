@@ -2,17 +2,14 @@ package poker.version_graphics.view;
 
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
 import poker.version_graphics.controller.PokerGameController;
 import poker.version_graphics.model.PokerGameModel;
 
 public class PokerGameView {
-	private HBox players;
+	private VBox players;
 	private ControlArea controls;
 	
 	private PokerGameModel model;
@@ -22,11 +19,15 @@ public class PokerGameView {
 		this.model = model;
 		
 		// Create all of the player panes we need, and put them into an HBox
-		players = new HBox();
+		players = new VBox();
+
 		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
 			PlayerPane pp = new PlayerPane();
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
 			players.getChildren().add(pp);
+
+
+
 		}
 		
 		// Create the control area
