@@ -62,25 +62,8 @@ public class PokerGameView {
                 getClass().getResource("poker.css").toExternalForm());
         stage.setTitle("Poker Miniproject");
 
-        //create entry scene
-		Button enter = new Button("Start Game");
-		enter.setOnAction(event -> {
-			stage.setScene(scene);
-		});
-		Label enterNames = new Label("Enter Player Names!");
-		HBox div = new HBox();
-
-		div.getChildren().add(enter);
-		div.getChildren().add(enterNames);
-		Scene entry = new Scene(div);
-
-		entry.getStylesheets().add(
-				getClass().getResource("poker.css").toExternalForm());
-
-
-
-
-        stage.setScene(entry);
+        // TODO create entry scene
+        stage.setScene(scene);
         stage.show();		
 	}
 	
