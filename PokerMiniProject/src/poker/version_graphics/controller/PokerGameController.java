@@ -51,6 +51,7 @@ public class PokerGameController {
      * Deal each player five cards, then evaluate the two hands
      */
     private void deal() {
+    	Player winner = model.getPlayer(0);
     	int cardsRequired = PokerGame.NUM_PLAYERS * Player.HAND_SIZE;
     	DeckOfCards deck = model.getDeck();
     	if (cardsRequired <= deck.getCardsRemaining()) {
@@ -62,12 +63,21 @@ public class PokerGameController {
         			p.addCard(card);
         		}
         		p.evaluateHand();
+
+        		//Comparing hands and evaluating the winner
+        		if(i!=0){
+					if(p.compareTo(winner)>0){
+						winner = p;
+					}
+				}
         		PlayerPane pp = view.getPlayerPane(i);
         		pp.updatePlayerDisplay();
         	}
-    	} else {
+			winner.isWinner();
+		} else {
             Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");
             alert.showAndWait();
     	}
     }
+
 }

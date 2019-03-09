@@ -1,12 +1,15 @@
 package poker.version_graphics.model;
 
+import javafx.animation.RotateTransition;
+import javafx.util.Duration;
+
 import javax.net.ssl.SNIHostName;
 import java.util.ArrayList;
 
 public class Player implements Comparable<Player> {
     public static final int HAND_SIZE = 5;
     
-    private final String playerName; // This is the ID
+    private String playerName; // This is the ID
     private final ArrayList<Card> cards = new ArrayList<>();
     private HandType handType;
     
@@ -25,12 +28,6 @@ public class Player implements Comparable<Player> {
     public void addCard(Card card) {
 
         if (cards.size() < HAND_SIZE) cards.add(card);
-        //if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.Ace));
-        //if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.King));
-        //if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.King));
-        //if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Spades, Card.Rank.King));
-        //if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.Ace));
-
     }
     
     public void discardHand() {
@@ -51,6 +48,10 @@ public class Player implements Comparable<Player> {
             handType = HandType.evaluateHand(cards);
         }
         return handType;
+    }
+
+    public void isWinner(){
+
     }
 
     /**
