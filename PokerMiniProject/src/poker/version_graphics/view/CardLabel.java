@@ -1,9 +1,6 @@
 package poker.version_graphics.view;
 
-import javafx.animation.PauseTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.SequentialTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,18 +18,30 @@ public class CardLabel extends Label {
 
 	public void setCard(Card card) {
 		if (card != null) {
+			//TODO first animation to turn around back
+			ScaleTransition st1 = new ScaleTransition(Duration.millis(500),this);
+			st1.setFromX(this.getScaleX());
+			st1.setToX(0);
+
+
+
 			String fileName = cardToFileName(card);
 			Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/" + fileName));
 			ImageView imv = new ImageView(image);
 			imv.fitWidthProperty().bind(this.widthProperty());
 			imv.fitHeightProperty().bind(this.heightProperty());
 			imv.setPreserveRatio(true);
+			st1.setOnFinished(event -> {
+				this.setGraphic(imv);
+			});
+
 			//second Animation to turn around front
-			ScaleTransition st = new ScaleTransition(Duration.millis(1000),this);
+			ScaleTransition st = new ScaleTransition(Duration.millis(500),this);
 			st.setFromX(0);
 			st.setToX(imv.getScaleX());
-			st.play();
-			this.setGraphic(imv);
+			SequentialTransition sqt = new SequentialTransition(st1,st);
+			sqt.play();
+
 		} else {
 			Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/"+color));
 			ImageView imv = new ImageView(image);
