@@ -2,6 +2,7 @@ package poker.version_graphics.controller;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.Card;
 import poker.version_graphics.model.DeckOfCards;
@@ -21,6 +22,7 @@ public class PokerGameController {
 		
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal() );
+		//assign action for color selection
 		for (int i = 0; i< 4;i++) {
 			int index = i;
 			view.getColorChoice(i).setOnAction(event -> {
@@ -28,6 +30,19 @@ public class PokerGameController {
 				shuffle();
 			});
 		}
+		//assign action for player number selection
+		for (int i = 0;i<3;i++) {
+			int index = i;
+			view.getPlayerNum(i).setOnAction(event -> {
+				PokerGame.numPlayers = Integer.parseInt(view.getPlayerNum(index).getText());
+				this.view.stop();
+				Stage stage = new Stage();
+				PokerGameModel newModel = new PokerGameModel();
+				PokerGameView newView = new PokerGameView(stage, newModel);
+				new PokerGameController(newModel, newView);
+			});
+		}
+
 
 	}
 
@@ -37,7 +52,7 @@ public class PokerGameController {
      * Remove all cards from players hands, and shuffle the deck
      */
     private void shuffle() {
-    	for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+    	for (int i = 0; i < PokerGame.numPlayers; i++) {
     		Player p = model.getPlayer(i);
     		p.discardHand();
     		PlayerPane pp = view.getPlayerPane(i);
@@ -52,10 +67,10 @@ public class PokerGameController {
      */
     private void deal() {
     	Player winner = model.getPlayer(0);
-    	int cardsRequired = PokerGame.NUM_PLAYERS * Player.HAND_SIZE;
+    	int cardsRequired = PokerGame.numPlayers * Player.HAND_SIZE;
     	DeckOfCards deck = model.getDeck();
     	if (cardsRequired <= deck.getCardsRemaining()) {
-        	for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+        	for (int i = 0; i < PokerGame.numPlayers; i++) {
         		Player p = model.getPlayer(i);
         		p.discardHand();
         		for (int j = 0; j < Player.HAND_SIZE; j++) {

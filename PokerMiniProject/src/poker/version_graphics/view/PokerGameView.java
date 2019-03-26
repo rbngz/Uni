@@ -5,7 +5,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
-import poker.version_graphics.controller.PokerGameController;
 import poker.version_graphics.model.PokerGameModel;
 
 public class PokerGameView {
@@ -14,14 +13,16 @@ public class PokerGameView {
 	
 	private PokerGameModel model;
 	private MenuBar menu;
+	private Stage stage;
 	
 	public PokerGameView(Stage stage, PokerGameModel model) {
 		this.model = model;
+		this.stage = stage;
 		
 		// Create all of the player panes we need, and put them into an HBox
 		players = new VBox();
 
-		for (int i = 0; i < PokerGame.NUM_PLAYERS; i++) {
+		for (int i = 0; i < PokerGame.numPlayers; i++) {
 			PlayerPane pp = new PlayerPane();
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
 			players.getChildren().add(pp);
@@ -70,6 +71,10 @@ public class PokerGameView {
         stage.setScene(scene);
         stage.show();		
 	}
+
+	public void stop(){
+		stage.hide();
+	}
 	
 	public PlayerPane getPlayerPane(int i) {
 		return (PlayerPane) players.getChildren().get(i);
@@ -85,4 +90,5 @@ public class PokerGameView {
 	public MenuItem getColorChoice(int i){
 		return menu.getMenus().get(0).getItems().get(i);
 	}
+	public MenuItem getPlayerNum(int i){ return menu.getMenus().get(1).getItems().get(i);}
 }
