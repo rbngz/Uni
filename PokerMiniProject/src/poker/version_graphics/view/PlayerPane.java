@@ -58,6 +58,6 @@ public class PlayerPane extends VBox {
     }
     public void setWinner(){
         lblName.setText("WINNER");
-        
+
     }
 }
