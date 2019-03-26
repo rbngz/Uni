@@ -36,9 +36,8 @@ public class PokerGameController {
 			view.getPlayerNum(i).setOnAction(event -> {
 				PokerGame.numPlayers = Integer.parseInt(view.getPlayerNum(index).getText());
 				this.view.stop();
-				Stage stage = new Stage();
 				PokerGameModel newModel = new PokerGameModel();
-				PokerGameView newView = new PokerGameView(stage, newModel);
+				PokerGameView newView = new PokerGameView(new Stage(), newModel);
 				new PokerGameController(newModel, newView);
 			});
 		}

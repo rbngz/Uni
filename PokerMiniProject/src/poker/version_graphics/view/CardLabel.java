@@ -1,8 +1,10 @@
 package poker.version_graphics.view;
 
+import javafx.animation.ScaleTransition;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import poker.version_graphics.controller.PokerGameController;
 import poker.version_graphics.model.Card;
 
@@ -21,6 +23,11 @@ public class CardLabel extends Label {
 			imv.fitWidthProperty().bind(this.widthProperty());
 			imv.fitHeightProperty().bind(this.heightProperty());
 			imv.setPreserveRatio(true);
+			//Animation
+			ScaleTransition st = new ScaleTransition(Duration.millis(1000),this);
+			st.setFromX(0);
+			st.setToX(imv.getScaleX());
+			st.play();
 			this.setGraphic(imv);
 		} else {
 			Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/"+color));
