@@ -50,10 +50,6 @@ public class Player implements Comparable<Player> {
         return handType;
     }
 
-    public void isWinner(){
-
-    }
-
     /**
      * Hands are compared, based on the evaluation they have.
      */

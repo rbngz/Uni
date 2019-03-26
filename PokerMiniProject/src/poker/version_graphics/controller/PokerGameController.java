@@ -22,6 +22,7 @@ public class PokerGameController {
 		
 		view.getShuffleButton().setOnAction( e -> shuffle() );
 		view.getDealButton().setOnAction( e -> deal() );
+		view.getWinnerButton().setOnAction(event -> showWinner());
 		//assign action for color selection
 		for (int i = 0; i< 4;i++) {
 			int index = i;
@@ -65,7 +66,6 @@ public class PokerGameController {
      * Deal each player five cards, then evaluate the two hands
      */
     private void deal() {
-    	Player winner = model.getPlayer(0);
     	int cardsRequired = PokerGame.numPlayers * Player.HAND_SIZE;
     	DeckOfCards deck = model.getDeck();
     	if (cardsRequired <= deck.getCardsRemaining()) {
@@ -78,20 +78,32 @@ public class PokerGameController {
         		}
         		p.evaluateHand();
 
-        		//Comparing hands and evaluating the winner
-        		if(i!=0){
-					if(p.compareTo(winner)>0){
-						winner = p;
-					}
-				}
         		PlayerPane pp = view.getPlayerPane(i);
         		pp.updatePlayerDisplay();
         	}
-			winner.isWinner();
 		} else {
             Alert alert = new Alert(AlertType.ERROR, "Not enough cards - shuffle first");
             alert.showAndWait();
     	}
     }
+    private void showWinner(){
+		//Comparing hands and evaluating the winner
+		Player winner = model.getPlayer(0);
+		PlayerPane winnerPane = view.getPlayerPane(0);
+		for(int i = 1; i<PokerGame.numPlayers;i++){
+			System.out.println(winner.compareTo(model.getPlayer(i)));
+			if(winner.compareTo(model.getPlayer(i))<0){
+				winner = model.getPlayer(i);
+				winnerPane = view.getPlayerPane(i);
+				i = 1;
+			}
+		}
+
+
+		winnerPane.setWinner();
+
+
+
+	}
 
 }

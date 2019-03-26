@@ -83,7 +83,7 @@ public class PokerGameView {
 	public Button getShuffleButton() {
 		return controls.btnShuffle;
 	}
-	
+	public Button getWinnerButton(){ return controls.btnShowWinner; }
 	public Button getDealButton() {
 		return controls.btnDeal;
 	}

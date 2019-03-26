@@ -1,9 +1,14 @@
 package poker.version_graphics.view;
 
+import javafx.animation.FillTransition;
+import javafx.animation.StrokeTransition;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Shape;
+import javafx.util.Duration;
 import poker.version_graphics.model.Card;
 import poker.version_graphics.model.HandType;
 import poker.version_graphics.model.Player;
@@ -50,5 +55,9 @@ public class PlayerPane extends VBox {
     		else
     			lblEvaluation.setText("--");
     	}
+    }
+    public void setWinner(){
+        lblName.setText("WINNER");
+        
     }
 }
