@@ -1,6 +1,9 @@
 package poker.version_graphics.view;
 
+import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,6 +13,7 @@ import poker.version_graphics.model.Card;
 
 public class CardLabel extends Label {
 	private static String color = "card_back_red.png";
+	private static int cardNum = 0;
 	public CardLabel() {
 		super();
 		this.getStyleClass().add("card");
@@ -23,7 +27,7 @@ public class CardLabel extends Label {
 			imv.fitWidthProperty().bind(this.widthProperty());
 			imv.fitHeightProperty().bind(this.heightProperty());
 			imv.setPreserveRatio(true);
-			//Animation
+			//second Animation to turn around front
 			ScaleTransition st = new ScaleTransition(Duration.millis(1000),this);
 			st.setFromX(0);
 			st.setToX(imv.getScaleX());
@@ -35,6 +39,19 @@ public class CardLabel extends Label {
 			imv.fitWidthProperty().bind(this.widthProperty().subtract(2));
 			imv.fitHeightProperty().bind(this.heightProperty().subtract(2));
 			imv.setPreserveRatio(true);
+			TranslateTransition tt = new TranslateTransition(Duration.millis(1000),this);
+			tt.setFromX(500);
+			tt.setToX(0);
+			SequentialTransition sqt = new SequentialTransition(
+					new PauseTransition(Duration.millis(100*cardNum)),
+					tt
+			);
+			sqt.play();
+			cardNum++;
+			if(cardNum>4){
+				cardNum=0;
+			}
+
 			this.setGraphic(imv);
 		}
 	}
