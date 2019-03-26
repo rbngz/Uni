@@ -42,11 +42,15 @@ public class PokerGameView {
 		MenuItem black = new MenuItem("Black");
 		MenuItem purple = new MenuItem("Purple");
 
-		menu1.getItems().add(blue);
-		menu1.getItems().add(black);
-		menu1.getItems().add(purple);
-		menu1.getItems().add(red);
-		menu.getMenus().add(menu1);
+		Menu menu2 = new Menu("Choose Player Number");
+		MenuItem twoPlayer = new MenuItem("2");
+		MenuItem threePlayer = new MenuItem("3");
+		MenuItem fourPlayer = new MenuItem("4");
+
+
+		menu1.getItems().addAll(blue, black, purple, red);
+		menu2.getItems().addAll(twoPlayer,threePlayer,fourPlayer);
+		menu.getMenus().addAll(menu1, menu2);
 		
 		// Put players and controls into a BorderPane
 		BorderPane root = new BorderPane();
@@ -63,7 +67,6 @@ public class PokerGameView {
                 getClass().getResource("poker.css").toExternalForm());
         stage.setTitle("Poker Miniproject");
 
-        // TODO create entry scene
         stage.setScene(scene);
         stage.show();		
 	}
