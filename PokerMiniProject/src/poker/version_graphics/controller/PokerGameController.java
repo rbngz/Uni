@@ -87,11 +87,10 @@ public class PokerGameController {
     	}
     }
     private void showWinner(){
-		//Comparing hands and evaluating the winner
+		//Comparing hands and evaluating the best Hand
 		Player winner = model.getPlayer(0);
-		PlayerPane winnerPane = view.getPlayerPane(0);
+		PlayerPane winnerPane = null;
 		for(int i = 1; i<PokerGame.numPlayers;i++){
-			System.out.println(winner.compareTo(model.getPlayer(i)));
 			if(winner.compareTo(model.getPlayer(i))<0){
 				winner = model.getPlayer(i);
 				winnerPane = view.getPlayerPane(i);
@@ -99,10 +98,16 @@ public class PokerGameController {
 			}
 		}
 
+		if(winnerPane !=null) {
+			winnerPane.setWinner();
 
-		winnerPane.setWinner();
-
-
+			//See if anyone else has the same Hand
+			for (int i = 0; i < PokerGame.numPlayers; i++) {
+				if (winner.evaluateHand().equals(model.getPlayer(i).evaluateHand())) {
+					view.getPlayerPane(i).setWinner();
+				}
+			}
+		}
 
 	}
 

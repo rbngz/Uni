@@ -39,8 +39,12 @@ public class CardLabel extends Label {
 			ScaleTransition st = new ScaleTransition(Duration.millis(500),this);
 			st.setFromX(0);
 			st.setToX(imv.getScaleX());
-			SequentialTransition sqt = new SequentialTransition(st1,st);
+			SequentialTransition sqt = new SequentialTransition(new PauseTransition(Duration.millis(100*cardNum)),st1,st);
 			sqt.play();
+			cardNum++;
+			if(cardNum>4){
+				cardNum = 0;
+			}
 
 		} else {
 			Image image = new Image(this.getClass().getClassLoader().getResourceAsStream("poker/images/"+color));
