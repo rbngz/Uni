@@ -57,6 +57,8 @@ public enum HandType {
     }
     
     public static boolean isThreeOfAKind(ArrayList<Card> cards) {
+        //TODO EDIT method, does not work with jacks somehow
+
         // Store the ordinal value of the ranks to an Integer arraylist and sort it
         ArrayList<Integer> cardValue = new ArrayList<>();
         for (int i = 0; i<cards.size();i++){

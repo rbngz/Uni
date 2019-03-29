@@ -30,6 +30,12 @@ public class Player implements Comparable<Player> {
     public void addCard(Card card) {
 
         if (cards.size() < HAND_SIZE) cards.add(card);
+        //if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.Ten));
+        //if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Hearts, Card.Rank.King));
+        //if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.King));
+        //if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Spades, Card.Rank.Ace));
+        //if (cards.size() < HAND_SIZE) cards.add(new Card(Card.Suit.Clubs, Card.Rank.Ace));
+
     }
     
     public void discardHand() {

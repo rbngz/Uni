@@ -31,6 +31,7 @@ public class TieBreak {
 
     }
     private static ArrayList<Player> tieHighCard(ArrayList<Player> allWinners){
+        //TODO look for next highest card also
         ArrayList<Player> definiteWinners = new ArrayList<>();
         ArrayList<Integer> cardValues = new ArrayList<>();
         for (int i = 0; i<allWinners.size();i++){
@@ -82,8 +83,93 @@ public class TieBreak {
         return definiteWinners;
     }
     private static ArrayList<Player> tieTwoPair(ArrayList<Player> allWinners){
+        ArrayList<Player> definiteWinners = new ArrayList<>();
+        ArrayList<Integer> pairs = new ArrayList<>();
+        ArrayList<Integer> remainingCards = new ArrayList<>();
+        //store all pair values in Arraylist
+        for(Player x : allWinners) {
+            ArrayList<Card> clonedCards = (ArrayList<Card>) x.getCards().clone();
+            int pairsFound = 0;
+            for (int i = 0; i < clonedCards.size() - 1 && pairsFound < 2; i++) {
+                for (int j = i + 1; j < clonedCards.size() && pairsFound < 2; j++) {
+                    if (clonedCards.get(i).getRank() == clonedCards.get(j).getRank()) {
+                        pairs.add(clonedCards.get(i).getRank().ordinal());
+                        clonedCards.remove(j);
+                        clonedCards.remove(i);
+                        pairsFound++;
+                        i=0;
+                    }
+                }
+            }
+            remainingCards.add(clonedCards.get(0).getRank().ordinal());
+        }
+        //store highest pair and lowest pair values of each hand in a new Arraylist
+        ArrayList<Integer> highestPairs = new ArrayList<>();
+        for(int i = 0; i<pairs.size();i+=2){
+            if(pairs.get(i)>pairs.get(i+1)){
+                highestPairs.add(pairs.get(i));
+            }else{
+                highestPairs.add(pairs.get(i+1));
+            }
+        }
+        // find highest pair in all hands
+        int bestPair = 0;
+        for(int i : highestPairs){
+            if(i>bestPair) bestPair = i;
+        }
+        ArrayList<Player> tempWinners = new ArrayList<>();
+        //stor each hand with this highest pair as winner
+        for(int i =0; i<highestPairs.size();i++){
+            if(highestPairs.get(i) == bestPair){
+                tempWinners.add(allWinners.get(i));
+            }
+        }
+        //If there is only one winner return the winner, else find best second pair
+        if (tempWinners.size()==1) definiteWinners = tempWinners;
+        else{
+            ArrayList<Integer> tempLowestPairs = new ArrayList<>();
+            ArrayList<Integer> lowestPairs = new ArrayList<>();
+            ArrayList<Player> tempWinner2 = new ArrayList<>();
 
-        return allWinners;
+            for(int i = 0; i<pairs.size();i+=2){
+                if(pairs.get(i)>pairs.get(i+1)){
+                    tempLowestPairs.add(pairs.get(i+1));
+                }else{
+                    tempLowestPairs.add(pairs.get(i));
+                }
+            }
+            //add the lowest pairs to final lowest pair list from players that are in temp Winners
+            for(int i = 0; i<tempWinners.size();i++){
+                for(int j = 0; j<allWinners.size();j++){
+                    if(tempWinners.get(i).equals(allWinners.get(j))){
+                        lowestPairs.add(tempLowestPairs.get(j));
+                    }
+                }
+            }
+            // find best pair of the lower ones and store each players of the tempWinners as definite winners
+            int bestLowestPair = 0;
+            for (int i : lowestPairs){
+                if(i>bestLowestPair) bestLowestPair = i;
+            }
+            for (int i =0;i<lowestPairs.size();i++){
+                if(lowestPairs.get(i).equals(bestLowestPair)){
+                    tempWinner2.add(tempWinners.get(i));
+                }
+            }
+            // again if there is only one winner store as definite winner, else compare remaining card
+            if(tempWinner2.size()==1) definiteWinners = tempWinner2;
+            else{
+                ArrayList<Integer> lastCards = new ArrayList<>();
+                for (Player x : tempWinner2){
+                    lastCards.add(remainingCards.get(allWinners.indexOf(x)));
+                }
+                //remove player with lower last card of if it is the same then both players win
+                if(lastCards.get(0)>lastCards.get(1)) tempWinner2.remove(1);
+                else if (lastCards.get(0)<lastCards.get(1)) tempWinner2.remove(0);
+                definiteWinners = tempWinner2;
+            }
+        }
+        return definiteWinners;
     }
     private static ArrayList<Player> tieThreeOfAKind(ArrayList<Player> allWinners){
 

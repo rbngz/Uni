@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57015bf1-da61-4b00-812c-d4a429e59166" name="Default Changelist" comment="pe">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/poker/version_graphics/model/HandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/poker/version_graphics/model/HandType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/poker/version_graphics/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/poker/version_graphics/model/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/poker/version_graphics/model/TieBreak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/poker/version_graphics/model/TieBreak.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -16,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+            <state relative-caret-position="465">
+              <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
               <folding>
                 <element signature="e#457#458#0" expanded="true" />
                 <element signature="e#501#502#0" expanded="true" />
@@ -30,15 +33,6 @@
                 <element signature="e#1339#1340#0" expanded="true" />
                 <element signature="e#1392#1393#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/HandType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -99,11 +93,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/HandType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="619">
+              <caret line="68" column="41" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/TieBreak.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="73" column="9" lean-forward="true" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
+            <state relative-caret-position="1898">
+              <caret line="172" column="5" lean-forward="true" selection-start-line="172" selection-start-column="5" selection-end-line="172" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -149,17 +152,17 @@
         <option value="$PROJECT_DIR$/src/version_graphics/model/DeckOfCards.java" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/model/DeckOfCards.java" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/model/HandTypeTest.java" />
-        <option value="$PROJECT_DIR$/src/poker/version_graphics/model/HandType.java" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/PokerGame.java" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/model/PokerGameModel.java" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/view/PokerGameView.java" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/view/CardLabel.java" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/view/ControlArea.java" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/view/DeckLabel.java" />
-        <option value="$PROJECT_DIR$/src/poker/version_graphics/model/Player.java" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/view/poker.css" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/view/PlayerPane.java" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/controller/PokerGameController.java" />
+        <option value="$PROJECT_DIR$/src/poker/version_graphics/model/HandType.java" />
+        <option value="$PROJECT_DIR$/src/poker/version_graphics/model/Player.java" />
         <option value="$PROJECT_DIR$/src/poker/version_graphics/model/TieBreak.java" />
       </list>
     </option>
@@ -245,7 +248,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553860288232" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553875606840" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -332,7 +335,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51700000" />
+    <option name="totallyTimeSpent" value="60566000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -412,9 +415,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/poker/version_graphics/model/TieBreak.java</url>
-          <line>70</line>
+          <line>149</line>
           <properties />
-          <option name="timeStamp" value="14" />
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -478,13 +481,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/HandTypeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2225">
-          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/view/CardLabel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-124">
@@ -493,25 +489,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#2359#2360#0" expanded="true" />
             <element signature="e#2385#2386#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
-          <folding>
-            <element signature="e#457#458#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#538#539#0" expanded="true" />
-            <element signature="e#571#572#0" expanded="true" />
-            <element signature="e#612#613#0" expanded="true" />
-            <element signature="e#640#641#0" expanded="true" />
-            <element signature="e#871#872#0" expanded="true" />
-            <element signature="e#906#907#0" expanded="true" />
-            <element signature="e#1339#1340#0" expanded="true" />
-            <element signature="e#1392#1393#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -543,10 +520,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/HandType.java">
+    <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/DeckOfCards.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+        <state relative-caret-position="105">
+          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -557,17 +534,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/DeckOfCards.java">
+    <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/HandType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        <state relative-caret-position="619">
+          <caret line="68" column="41" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/HandTypeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2225">
+          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+          <folding>
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#871#872#0" expanded="true" />
+            <element signature="e#906#907#0" expanded="true" />
+            <element signature="e#1339#1340#0" expanded="true" />
+            <element signature="e#1392#1393#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/poker/version_graphics/model/TieBreak.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="73" column="9" lean-forward="true" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
+        <state relative-caret-position="1898">
+          <caret line="172" column="5" lean-forward="true" selection-start-line="172" selection-start-column="5" selection-end-line="172" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
