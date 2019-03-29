@@ -102,14 +102,22 @@ public class PokerGameController {
             }
         }
 
-
-        //Evaluate Winners of tie break and store in Arraylist
-        allWinners = TieBreak.getTieWinner(allWinners);
-        for (int i = 0; i < allWinners.size(); i++) {
-            System.out.println(allWinners.get(i));
-            for(int j = 0; j< PokerGame.numPlayers; j++){
-                if(allWinners.get(i).equals(view.getPlayerPane(j).getPlayer())){
-                    view.getPlayerPane(j).setWinner();
+        //if there is only one winner then set him as winner
+        if (allWinners.size()==1){
+            for(int i =0;i<PokerGame.numPlayers;i++){
+                if(allWinners.get(0).equals(view.getPlayerPane(i).getPlayer())){
+                    view.getPlayerPane(i).setWinner();
+                }
+            }
+        } else {
+            //Evaluate Winners of tie break and store in Arraylist
+            allWinners = TieBreak.getTieWinner(allWinners);
+            for (int i = 0; i < allWinners.size(); i++) {
+                System.out.println(allWinners.get(i));
+                for (int j = 0; j < PokerGame.numPlayers; j++) {
+                    if (allWinners.get(i).equals(view.getPlayerPane(j).getPlayer())) {
+                        view.getPlayerPane(j).setWinner();
+                    }
                 }
             }
         }
