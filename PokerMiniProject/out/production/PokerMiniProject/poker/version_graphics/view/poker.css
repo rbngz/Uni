@@ -36,3 +36,7 @@
     -fx-text-fill: white;
     -fx-font-size: 20px;
 }
+.winner {
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+}

@@ -1,6 +1,8 @@
 package poker.version_graphics.view;
 
 import javafx.animation.FillTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
 import javafx.animation.StrokeTransition;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -41,9 +43,13 @@ public class PlayerPane extends VBox {
     	this.player = player;
     	updatePlayerDisplay(); // Immediately display the player information
     }
+    public Player getPlayer(){
+        return player;
+    }
     
     public void updatePlayerDisplay() {
-    	lblName.setText(player.getPlayerName());
+        lblName.setText(player.getPlayerName());
+        lblName.getStyleClass().removeAll("winner");
     	for (int i = 0; i < Player.HAND_SIZE; i++) {
     		Card card = null;
     		if (player.getCards().size() > i) card = player.getCards().get(i);
@@ -55,9 +61,9 @@ public class PlayerPane extends VBox {
     		else
     			lblEvaluation.setText("--");
     	}
-    }
-    public void setWinner(){
-        lblName.setText("WINNER");
 
+    }
+    public void setWinner() {
+        lblName.getStyleClass().add("winner");
     }
 }

@@ -2,6 +2,7 @@ package poker.version_graphics.model;
 
 import javafx.animation.RotateTransition;
 import javafx.util.Duration;
+import poker.version_graphics.view.PlayerPane;
 
 import javax.net.ssl.SNIHostName;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class Player implements Comparable<Player> {
     private String playerName; // This is the ID
     private final ArrayList<Card> cards = new ArrayList<>();
     private HandType handType;
+    public boolean winner = false;
     
     public Player(String playerName) {
         this.playerName = playerName;
@@ -33,10 +35,16 @@ public class Player implements Comparable<Player> {
     public void discardHand() {
         cards.clear();
         handType = null;
+        winner = false;
     }
     
     public int getNumCards() {
         return cards.size();
+    }
+
+    public void isWinner(){
+        winner = true;
+
     }
 
     /**
