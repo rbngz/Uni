@@ -31,26 +31,44 @@ public class TieBreak {
 
     }
     private static ArrayList<Player> tieHighCard(ArrayList<Player> allWinners){
-        //TODO look for next highest card also
-        ArrayList<Player> definiteWinners = new ArrayList<>();
-        ArrayList<Integer> cardValues = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> hands = new ArrayList<>();
+        ArrayList<Player> definiteWinners;
+        ArrayList<Player> tempWinners = new ArrayList<>();
         for (int i = 0; i<allWinners.size();i++){
-            for (int j = 0; j<Player.HAND_SIZE;j++){
-                //Store all card values in ArrayList to evaluate highest card
-                cardValues.add(allWinners.get(i).getCards().get(j).getRank().ordinal());
+            hands.add(new ArrayList<>());
+            for(int j = 0; j< Player.HAND_SIZE;j++){
+                hands.get(i).add(allWinners.get(i).getCards().get(j).getRank().ordinal());
             }
         }
-        Collections.sort(cardValues);
-        int highestCard = cardValues.get(cardValues.size()-1);
-        //find highest card in player Hands and add them to list of definite winners
-        for (int i = 0; i<allWinners.size();i++) {
-            for (int j = 0; j < Player.HAND_SIZE; j++) {
-                if(highestCard==allWinners.get(i).getCards().get(j).getRank().ordinal()){
-                    definiteWinners.add(allWinners.get(i));
+        //determine highest card of each hand
+        for (ArrayList<Integer> hand : hands){
+            Collections.sort(hand, Collections.reverseOrder());
+        }
+
+        int highestCard = 0;
+        for(int i = 0; i< hands.size();i++){
+            if(hands.get(i).get(0)>highestCard) highestCard = hands.get(i).get(0);
+        }
+        for(int i = 0; i< hands.size();i++){
+            if(highestCard == hands.get(i).get(0)) tempWinners.add(allWinners.get(i));
+            hands.get(i).remove(0);
+        }
+        //while there is still more than one winner and there are still cards left to compare
+        while (tempWinners.size()>1&&hands.get(hands.size()-1).size()>0){
+            highestCard = 0;
+            for (int i = 0; i<hands.size();i++) {
+                if (hands.get(i).get(0) > highestCard) highestCard = hands.get(i).get(0);
+            }
+            for (int i = 0; i<hands.size(); i++){
+                if (hands.get(i).get(0)<highestCard){
+                    tempWinners.remove(i);
                 }
+                hands.get(i).remove(0);
             }
         }
-                return definiteWinners;
+        System.out.println(hands);
+        definiteWinners = tempWinners;
+        return definiteWinners;
     }
     private static ArrayList<Player> tieOnePair(ArrayList<Player> allWinners){
         ArrayList<Player> definiteWinners = new ArrayList<>();
@@ -178,16 +196,15 @@ public class TieBreak {
         for (Player p : allWinners){
             hands.add(p.getCards());
         }
-        ArrayList<ArrayList<Card>> clonedHands = (ArrayList<ArrayList<Card>>) hands.clone();
         //search for one pair and store the values of the hand in Array
         int[] threeOfAKindValues = new int[allWinners.size()];
-        for(int i = 0;i<clonedHands.size();i++){
+        for(int i = 0;i<hands.size();i++){
             boolean found = false;
             for (int j = 0;j<Player.HAND_SIZE-1&&!found;j++){
                 for (int x = j+1;x<Player.HAND_SIZE&&!found;x++){
-                    if(clonedHands.get(i).get(j).equals(clonedHands.get(i).get(x))){
+                    if(hands.get(i).get(j).equals(hands.get(i).get(x))){
                         found = true;
-                        threeOfAKindValues[i] = clonedHands.get(i).get(j).getRank().ordinal();
+                        threeOfAKindValues[i] = hands.get(i).get(j).getRank().ordinal();
                     }
                 }
             }
@@ -202,14 +219,11 @@ public class TieBreak {
                 winner.add(allWinners.get(i));
             }
         }
-
-
-
-        return allWinners;
+        return winner;
     }
     private static ArrayList<Player> tieFourOfAKind(ArrayList<Player> allWinners){
 
-        return allWinners;
+        return tieThreeOfAKind(allWinners); // works also for four of a kind
     }
     private static ArrayList<Player> tieStraight(ArrayList<Player> allWinners){
         //Evaluate players with highest card
