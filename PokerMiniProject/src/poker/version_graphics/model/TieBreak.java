@@ -171,7 +171,39 @@ public class TieBreak {
         }
         return definiteWinners;
     }
-    private static ArrayList<Player> tieThreeOfAKind(ArrayList<Player> allWinners){
+    private static ArrayList<Player> tieThreeOfAKind(ArrayList<Player> allWinners) {
+        //store all hand in Arraylist and clone them;
+        ArrayList<ArrayList<Card>> hands = new ArrayList<>();
+        ArrayList<Player> winner = new ArrayList<>(); //there can only be one Winner
+        for (Player p : allWinners){
+            hands.add(p.getCards());
+        }
+        ArrayList<ArrayList<Card>> clonedHands = (ArrayList<ArrayList<Card>>) hands.clone();
+        //search for one pair and store the values of the hand in Array
+        int[] threeOfAKindValues = new int[allWinners.size()];
+        for(int i = 0;i<clonedHands.size();i++){
+            boolean found = false;
+            for (int j = 0;j<Player.HAND_SIZE-1&&!found;j++){
+                for (int x = j+1;x<Player.HAND_SIZE&&!found;x++){
+                    if(clonedHands.get(i).get(j).equals(clonedHands.get(i).get(x))){
+                        found = true;
+                        threeOfAKindValues[i] = clonedHands.get(i).get(j).getRank().ordinal();
+                    }
+                }
+            }
+        }
+        //find highest value in all hands
+        int highestValue=0;
+        for(int i = 0; i<threeOfAKindValues.length;i++){
+            if(threeOfAKindValues[i]>highestValue) highestValue = threeOfAKindValues[i];
+        }
+        for (int i = 0; i<threeOfAKindValues.length;i++){
+            if (threeOfAKindValues[i]==highestValue){
+                winner.add(allWinners.get(i));
+            }
+        }
+
+
 
         return allWinners;
     }
