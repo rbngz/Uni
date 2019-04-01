@@ -78,6 +78,7 @@ public class PokerGameController {
         		p.evaluateHand();
 
         		PlayerPane pp = view.getPlayerPane(i);
+        		pp.lblEvaluation.setText("--");
         		pp.updatePlayerDisplay();
         	}
 		} else {

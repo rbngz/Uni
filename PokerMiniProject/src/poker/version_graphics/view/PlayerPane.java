@@ -1,9 +1,6 @@
 package poker.version_graphics.view;
 
-import javafx.animation.FillTransition;
-import javafx.animation.ParallelTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.StrokeTransition;
+import javafx.animation.*;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -15,11 +12,16 @@ import poker.version_graphics.model.Card;
 import poker.version_graphics.model.HandType;
 import poker.version_graphics.model.Player;
 
+import java.sql.Time;
+
 public class PlayerPane extends VBox {
     private Label lblName = new Label();
     private HBox hboxCards = new HBox();
-    private Label lblEvaluation = new Label("--");
-    
+    public Label lblEvaluation = new Label("--");
+
+    Timeline timeline = new Timeline();
+
+
     // Link to player object
     private Player player;
     
@@ -56,8 +58,15 @@ public class PlayerPane extends VBox {
     		CardLabel cl = (CardLabel) hboxCards.getChildren().get(i);
     		cl.setCard(card);
     		HandType evaluation = player.evaluateHand();
-    		if (evaluation != null)
-    			lblEvaluation.setText(evaluation.toString());
+    		if (evaluation != null){
+                timeline.setCycleCount(2);
+                timeline.setAutoReverse(true);
+                timeline.getKeyFrames().add(new KeyFrame(Duration.millis(700)));
+                timeline.setOnFinished(event -> {
+                    lblEvaluation.setText(evaluation.toString());
+                });
+                timeline.play();
+            }
     		else
     			lblEvaluation.setText("--");
     	}
