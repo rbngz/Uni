@@ -71,6 +71,7 @@ public class TieBreak {
         return definiteWinners;
     }
     private static ArrayList<Player> tieOnePair(ArrayList<Player> allWinners){
+        //TODO remove pair and send remaining cards to tieHighCard
         ArrayList<Player> definiteWinners = new ArrayList<>();
         ArrayList<Integer> pairs = new ArrayList<>();
         //go through each player hand and store the value of the pair in a Arraylist

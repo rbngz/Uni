@@ -8,7 +8,7 @@ import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.PokerGameModel;
 
 public class PokerGameView {
-	private VBox players;
+	private GridPane players;
 	private ControlArea controls;
 	
 	private PokerGameModel model;
@@ -19,14 +19,18 @@ public class PokerGameView {
 		this.model = model;
 		this.stage = stage;
 		
-		// Create all of the player panes we need, and put them into an HBox
-		players = new VBox();
+		// Create all of the player panes we need, and put them into an Gridpane
+		players = new GridPane();
 
 		for (int i = 0; i < PokerGame.numPlayers; i++) {
 			PlayerPane pp = new PlayerPane();
 			pp.setPlayer(model.getPlayer(i)); // link to player object in the logic
-			players.getChildren().add(pp);
-
+			if(PokerGame.numPlayers<4) players.add(pp,0,i);
+			else {
+				if(i<2){
+				players.add(pp,0,i);
+				} else players.add(pp,1,i-2);
+			}
 
 
 		}
