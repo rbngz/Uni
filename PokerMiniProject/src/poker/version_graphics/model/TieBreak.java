@@ -231,8 +231,40 @@ public class TieBreak {
     }
 
     private static ArrayList<Player> tieFullHouse(ArrayList<Player> allWinners){
+        int[] valuesThreeOfAKind = new int[allWinners.size()];
+        ArrayList<Player> winner = new ArrayList<>();
+        ArrayList<ArrayList<Card>> hands = new ArrayList<>();
+        for (Player p : allWinners){
+            hands.add(p.getCards());
+        }
+        // find value of the three of a kind
+        for (int i = 0;i<hands.size();i++){
+            Card currentCard = hands.get(i).get(0);
+            int count = 0;
+            for (int j=0;j<hands.get(i).size();j++){
+                if(currentCard.getRank().equals(hands.get(i).get(j).getRank())) count++;
+            }
+            if(count == 3){
+                valuesThreeOfAKind[i] = currentCard.getRank().ordinal();
+            } else {
+                for (Card card : hands.get(i)){
+                    if(!card.getRank().equals(currentCard.getRank())){
+                        valuesThreeOfAKind[i] = card.getRank().ordinal();
+                    }
+                }
+            }
+        }
+        int highestValue = 0;
+        for(int value : valuesThreeOfAKind){
+            if(value>highestValue) highestValue = value;
+        }
+        for (int i = 0;i<valuesThreeOfAKind.length;i++){
+            if(valuesThreeOfAKind[i]==highestValue){
+                winner.add(allWinners.get(i));
+            }
+        }
 
-        return allWinners;
+        return winner;
 
     }
     private static ArrayList<Player> tieFlush(ArrayList<Player> allWinners){
