@@ -4,6 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.DeckOfCards;
 
 public class ControlArea extends HBox{
@@ -15,7 +16,6 @@ public class ControlArea extends HBox{
 
     public ControlArea() {
     	super(); // Always call super-constructor first !!
-    	
     	this.getChildren().addAll(lblDeck, spacer, btnShuffle, btnDeal,btnShowWinner);
 
         HBox.setHgrow(spacer, Priority.ALWAYS); // Use region to absorb resizing
@@ -24,5 +24,10 @@ public class ControlArea extends HBox{
     
     public void linkDeck(DeckOfCards deck) {
     	lblDeck.setDeck(deck);
+    	deck.getCardsRemainingProperty().addListener(
+                ((observable, oldValue, newValue) -> {if(PokerGame.numPlayers*5>(int)newValue){
+                btnDeal.setDisable(true);} else btnDeal.setDisable(false);
+                })
+        );
     }
 }

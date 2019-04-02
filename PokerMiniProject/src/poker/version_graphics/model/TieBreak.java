@@ -53,17 +53,23 @@ public class TieBreak {
             if(highestCard == hands.get(i).get(0)) tempWinners.add(allWinners.get(i));
             hands.get(i).remove(0);
         }
+        int cardsRemaining=4*tempWinners.size();
         //while there is still more than one winner and there are still cards left to compare
-        while (tempWinners.size()>1&&hands.get(hands.size()-1).size()>0){
+        while (tempWinners.size()>1&&cardsRemaining>0){
             highestCard = 0;
-            for (int i = 0; i<hands.size();i++) {
-                if (hands.get(i).get(0) > highestCard) highestCard = hands.get(i).get(0);
+            ArrayList<ArrayList<Integer>> tempHands = new ArrayList<>();
+            for (int i = 0;i<tempWinners.size();i++){
+                tempHands.add(hands.get(allWinners.indexOf(tempWinners.get(i))));
             }
-            for (int i = 0; i<hands.size(); i++){
-                if (hands.get(i).get(0)<highestCard){
+            for (int i = 0; i<tempHands.size();i++) {
+                if (tempHands.get(i).get(0) > highestCard) highestCard = tempHands.get(i).get(0);
+            }
+            for (int i = 0; i<tempHands.size(); i++){
+                if (tempHands.get(i).get(0)<highestCard){
                     tempWinners.remove(i);
                 }
-                hands.get(i).remove(0);
+                tempHands.get(i).remove(0);
+                cardsRemaining--;
             }
         }
         System.out.println(hands);
@@ -71,7 +77,7 @@ public class TieBreak {
         return definiteWinners;
     }
     public static ArrayList<Player> tieOnePair(ArrayList<Player> allWinners){
-        //TODO remove pair and send remaining cards to tieHighCard
+        // remove pair and send remaining cards to tieHighCard
         ArrayList<Player> definiteWinners = new ArrayList<>();
         ArrayList<Integer> pairs = new ArrayList<>();
         ArrayList<ArrayList<Card>> hands = new ArrayList<>();

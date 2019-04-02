@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import poker.version_graphics.PokerGame;
 import poker.version_graphics.model.*;
 import poker.version_graphics.view.CardLabel;
+import poker.version_graphics.view.ControlArea;
 import poker.version_graphics.view.PlayerPane;
 import poker.version_graphics.view.PokerGameView;
 
@@ -19,9 +20,18 @@ public class PokerGameController {
 		this.model = model;
 		this.view = view;
 		
-		view.getShuffleButton().setOnAction( e -> shuffle() );
-		view.getDealButton().setOnAction( e -> deal() );
-		view.getWinnerButton().setOnAction(event -> showWinner());
+		view.getShuffleButton().setOnAction( e -> {
+			shuffle();
+			view.getWinnerButton().setDisable(false);
+		} );
+		view.getDealButton().setOnAction( e -> {
+			deal();
+			view.getWinnerButton().setDisable(false);
+		} );
+		view.getWinnerButton().setOnAction(event -> {
+			showWinner();
+			view.getWinnerButton().setDisable(true);
+		});
 		//assign action for color selection
 		for (int i = 0; i< 4;i++) {
 			int index = i;
@@ -87,6 +97,7 @@ public class PokerGameController {
     	}
     }
     private void showWinner(){
+
 		//Comparing hands and evaluating the best Hand
 		Player winner = model.getPlayer(0);
 		for(int i = 1; i<PokerGame.numPlayers;i++){
