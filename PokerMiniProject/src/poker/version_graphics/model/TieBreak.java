@@ -74,14 +74,21 @@ public class TieBreak {
         //TODO remove pair and send remaining cards to tieHighCard
         ArrayList<Player> definiteWinners = new ArrayList<>();
         ArrayList<Integer> pairs = new ArrayList<>();
+        ArrayList<ArrayList<Card>> hands = new ArrayList<>();
+        for(int i = 0; i< allWinners.size();i++){
+            hands.add(allWinners.get(i).getCards());
+        }
+        ArrayList<ArrayList<Card>> clonedHands = (ArrayList<ArrayList<Card>>) hands.clone();
         //go through each player hand and store the value of the pair in a Arraylist
-        for (Player x : allWinners) {
+        for (ArrayList<Card> hand : clonedHands) {
             boolean found = false;
-            for (int i = 0; i < x.getCards().size() - 1 && !found; i++) {
-                for (int j = i + 1; j < x.getCards().size() && !found; j++) {
-                    if (x.getCards().get(i).getRank() == x.getCards().get(j).getRank()) {
-                        pairs.add(x.getCards().get(i).getRank().ordinal());
+            for (int i = 0; i < hand.size() - 1 && !found; i++) {
+                for (int j = i + 1; j < hand.size() && !found; j++) {
+                    if (hand.get(i).getRank().equals(hand.get(j).getRank())) {
+                        pairs.add(hand.get(i).getRank().ordinal());
                         found = true;
+                        hand.remove(j);
+                        hand.remove(i);
                     }
 
                 }
@@ -98,8 +105,16 @@ public class TieBreak {
                 definiteWinners.add(allWinners.get(i));
             }
         }
-
-        return definiteWinners;
+        // if more than one player have the same pair then evaluate the remaining cards
+        if (definiteWinners.size()>1){
+            for(int i = 0 ; i< definiteWinners.size();i++){
+                definiteWinners.get(i).getCards().clear();
+                for(int j = 0; i< clonedHands.get(i).size();j++){
+                    definiteWinners.get(i).getCards().add(clonedHands.get(i).get(j));
+                }
+            }
+            return tieHighCard(definiteWinners);
+        } else return definiteWinners;
     }
     private static ArrayList<Player> tieTwoPair(ArrayList<Player> allWinners){
         ArrayList<Player> definiteWinners = new ArrayList<>();

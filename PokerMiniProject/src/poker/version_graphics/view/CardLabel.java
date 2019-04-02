@@ -18,7 +18,7 @@ public class CardLabel extends Label {
 
 	public void setCard(Card card) {
 		if (card != null) {
-			//TODO first animation to turn around back
+			//first animation to turn around back
 			ScaleTransition st1 = new ScaleTransition(Duration.millis(500),this);
 			st1.setFromX(this.getScaleX());
 			st1.setToX(0);
