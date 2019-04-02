@@ -30,13 +30,13 @@ public class TieBreak {
         return definiteWinners;
 
     }
-    private static ArrayList<Player> tieHighCard(ArrayList<Player> allWinners){
+    public static ArrayList<Player> tieHighCard(ArrayList<Player> allWinners){
         ArrayList<ArrayList<Integer>> hands = new ArrayList<>();
         ArrayList<Player> definiteWinners;
         ArrayList<Player> tempWinners = new ArrayList<>();
         for (int i = 0; i<allWinners.size();i++){
             hands.add(new ArrayList<>());
-            for(int j = 0; j< Player.HAND_SIZE;j++){
+            for(int j = 0; j< allWinners.get(i).getCards().size();j++){
                 hands.get(i).add(allWinners.get(i).getCards().get(j).getRank().ordinal());
             }
         }
@@ -70,7 +70,7 @@ public class TieBreak {
         definiteWinners = tempWinners;
         return definiteWinners;
     }
-    private static ArrayList<Player> tieOnePair(ArrayList<Player> allWinners){
+    public static ArrayList<Player> tieOnePair(ArrayList<Player> allWinners){
         //TODO remove pair and send remaining cards to tieHighCard
         ArrayList<Player> definiteWinners = new ArrayList<>();
         ArrayList<Integer> pairs = new ArrayList<>();
@@ -107,16 +107,10 @@ public class TieBreak {
         }
         // if more than one player have the same pair then evaluate the remaining cards
         if (definiteWinners.size()>1){
-            for(int i = 0 ; i< definiteWinners.size();i++){
-                definiteWinners.get(i).getCards().clear();
-                for(int j = 0; i< clonedHands.get(i).size();j++){
-                    definiteWinners.get(i).getCards().add(clonedHands.get(i).get(j));
-                }
-            }
             return tieHighCard(definiteWinners);
         } else return definiteWinners;
     }
-    private static ArrayList<Player> tieTwoPair(ArrayList<Player> allWinners){
+    public static ArrayList<Player> tieTwoPair(ArrayList<Player> allWinners){
         ArrayList<Player> definiteWinners = new ArrayList<>();
         ArrayList<Integer> pairs = new ArrayList<>();
         ArrayList<Integer> remainingCards = new ArrayList<>();
@@ -132,6 +126,7 @@ public class TieBreak {
                         clonedCards.remove(i);
                         pairsFound++;
                         i=0;
+                        j=0;
                     }
                 }
             }
@@ -152,7 +147,7 @@ public class TieBreak {
             if(i>bestPair) bestPair = i;
         }
         ArrayList<Player> tempWinners = new ArrayList<>();
-        //stor each hand with this highest pair as winner
+        //store each hand with this highest pair as winner
         for(int i =0; i<highestPairs.size();i++){
             if(highestPairs.get(i) == bestPair){
                 tempWinners.add(allWinners.get(i));

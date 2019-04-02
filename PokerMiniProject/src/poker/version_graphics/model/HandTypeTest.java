@@ -33,6 +33,18 @@ public class HandTypeTest {
 			{ "3S", "2C", "3H", "2D", "QH" },
 			{ "9S", "2C", "2H", "5D", "5H" }
 			};
+	private static String[][] threeOfAKinds = {
+			{ "2S", "2C", "2H", "5D", "7H" },
+			{ "2S", "AC", "5H", "AD", "AH" },
+			{ "3S", "2C", "3H", "2D", "3H" },
+			{ "9S", "2C", "5H", "5D", "5H" }
+	};
+	private static String[][] fourOfAKinds = {
+			{ "2S", "2C", "2H", "2D", "7H" },
+			{ "7S", "AC", "AH", "AD", "AH" },
+			{ "2S", "2S", "4S", "2D", "2S" },
+			{ "KS", "KC", "KH", "JD", "KH" }
+	};
 
 	private static String[][] straights = {
 			{ "2S", "3C", "4H", "5D", "6H" },
@@ -69,6 +81,8 @@ public class HandTypeTest {
 	ArrayList<ArrayList<Card>> flushHands;
 	ArrayList<ArrayList<Card>> fullHouseHands;
 	ArrayList<ArrayList<Card>> straightFlushHands;
+	ArrayList<ArrayList<Card>> threeOfAKindHands;
+	ArrayList<ArrayList<Card>> fourOfAKindHands;
 	
 	/**
 	 * The makeHands method is called before each test method,
@@ -84,6 +98,8 @@ public class HandTypeTest {
 		flushHands = makeHands(flushs);
 		fullHouseHands = makeHands(fullHouses);
 		straightFlushHands = makeHands(straightFlushs);
+		threeOfAKindHands = makeHands(threeOfAKinds);
+		fourOfAKindHands = makeHands(fourOfAKinds);
 	}
 
 	/**
@@ -119,6 +135,21 @@ public class HandTypeTest {
 			assertTrue(HandType.isTwoPair(hand));
 		}
 	}
+	@Test
+	public void testIsThreeOfAKind(){
+		for (ArrayList<Card> hand : threeOfAKindHands){
+			assertTrue(HandType.isThreeOfAKind(hand));
+		}
+	}
+
+	@Test
+	public void testIsFourOfAKind(){
+		for (ArrayList<Card> hand : fourOfAKindHands){
+			assertTrue(HandType.isFourOfAKind(hand));
+		}
+	}
+
+
 
 	@Test
 	public void testIsStraight() {

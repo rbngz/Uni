@@ -57,7 +57,6 @@ public enum HandType {
     }
     
     public static boolean isThreeOfAKind(ArrayList<Card> cards) {
-        //TODO EDIT method, does not work with jacks somehow
 
         // Store the ordinal value of the ranks to an Integer arraylist and sort it
         ArrayList<Integer> cardValue = new ArrayList<>();
@@ -66,9 +65,10 @@ public enum HandType {
         }
         Collections.sort(cardValue);
 
-        // Check if the first three cards or the last three cards are the same
+        // Check if the first three cards, the last three cards or the middle three cards are the same
         if(cardValue.get(0).equals(cardValue.get(1))&& cardValue.get(1).equals(cardValue.get(2))) return true;
-        if(cardValue.get(cardValue.size()-1).equals(cardValue.get(cardValue.size()-2))&& cardValue.get(cardValue.size()-2).equals(cardValue.get(cardValue.size()-3))) return true;
+        else if(cardValue.get(cardValue.size()-1).equals(cardValue.get(cardValue.size()-2))&& cardValue.get(cardValue.size()-2).equals(cardValue.get(cardValue.size()-3))) return true;
+        else if(cardValue.get(1).equals(cardValue.get(2))&& cardValue.get(2).equals(cardValue.get(3))) return true;
         else return false;
 
     }
@@ -119,19 +119,29 @@ public enum HandType {
 
     public static boolean isFourOfAKind(ArrayList<Card> cards) {
         // TODO edit method!!!
-        ArrayList<Card> clonedCards = (ArrayList<Card>) cards.clone();
-        //check if the first three cards are the same
-        clonedCards.remove(4);
-        clonedCards.remove(3);
-
-        // check if one of the last 2 cards are the same rank as the others
-        if(isThreeOfAKind(clonedCards)){
-            if(cards.get(4).getRank()==cards.get(0).getRank()||cards.get(3).getRank()==cards.get(0).getRank()){
+        int count = 0;
+        Card.Rank currentRank = cards.get(0).getRank();
+        for (int i = 0; i < cards.size(); i++) {
+            if (currentRank.equals(cards.get(i).getRank())) {
+                count++;
+            }
+        }
+        if (count == 4) return true;
+        if (count == 1) {
+            currentRank = cards.get(1).getRank();
+            count = 0;
+            for (int i = 0; i < cards.size(); i++) {
+                if (cards.get(i).getRank().equals(currentRank)) count++;
+            }
+            if (count == 4) {
                 return true;
-            } else return false;
+            }
 
-        } else return false;
+        }
+        return false;
     }
+
+
     
     public static boolean isStraightFlush(ArrayList<Card> cards) {
         return (isStraight(cards)&&isFlush(cards));
