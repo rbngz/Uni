@@ -48,9 +48,9 @@ public class PokerGameView {
 		MenuItem purple = new MenuItem("Purple");
 
 		Menu menu2 = new Menu("Choose Player Number");
-		MenuItem twoPlayer = new MenuItem("2");
-		MenuItem threePlayer = new MenuItem("3");
-		MenuItem fourPlayer = new MenuItem("4");
+		MenuItem twoPlayer = new MenuItem("2 Players");
+		MenuItem threePlayer = new MenuItem("3 Players");
+		MenuItem fourPlayer = new MenuItem("4 Players");
 
 
 		menu1.getItems().addAll(blue, black, purple, red);

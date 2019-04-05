@@ -44,7 +44,7 @@ public class PokerGameController {
 		for (int i = 0;i<3;i++) {
 			int index = i;
 			view.getPlayerNum(i).setOnAction(event -> {
-				PokerGame.numPlayers = Integer.parseInt(view.getPlayerNum(index).getText());
+				PokerGame.numPlayers = Integer.parseInt(Character.toString(view.getPlayerNum(index).getText().charAt(0)));
 				this.view.stop();
 				PokerGameModel newModel = new PokerGameModel();
 				PokerGameView newView = new PokerGameView(new Stage(), newModel);
@@ -125,7 +125,6 @@ public class PokerGameController {
             //Evaluate Winners of tie break and store in Arraylist
             allWinners = TieBreak.getTieWinner(allWinners);
             for (int i = 0; i < allWinners.size(); i++) {
-                System.out.println(allWinners.get(i));
                 for (int j = 0; j < PokerGame.numPlayers; j++) {
                     if (allWinners.get(i).equals(view.getPlayerPane(j).getPlayer())) {
                         view.getPlayerPane(j).setWinner();

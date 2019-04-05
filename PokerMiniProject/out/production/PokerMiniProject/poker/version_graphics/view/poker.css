@@ -37,6 +37,6 @@
     -fx-font-size: 20px;
 }
 .winner {
-    -fx-border-color: red;
+    -fx-border-color: yellow;
     -fx-border-width: 2px;
 }

@@ -72,7 +72,6 @@ public class TieBreak {
                 cardsRemaining--;
             }
         }
-        System.out.println(hands);
         definiteWinners = tempWinners;
         return definiteWinners;
     }
